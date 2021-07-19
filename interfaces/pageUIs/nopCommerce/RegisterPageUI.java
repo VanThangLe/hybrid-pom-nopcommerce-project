@@ -10,10 +10,10 @@ public class RegisterPageUI {
 	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
 	public static final String COMPANY_TEXTBOX = "//input[@id='Company']";
 	public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
-	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ComfirmPassword']";
+	public static final String CONFIRM_PASSWORD_TEXTBOX = "//input[@id='ConfirmPassword']";
 	public static final String REGISTER_BUTTON = "//button[@id='register-button']";
 	public static final String REGISTERED_SUCCESS_MESSAGE = "//div[@class='result' and text()='Your registration completed']";
 	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
-	public static final String ERROR_MESSAGE_WITH_EMPTY_EMAIL = "//span[@class='field-validation-error' and @data-valmsg-for='%s']";
-	public static final String ERROR_MESSAGE = "//span[@class='field-validation-error' and @data-valmsg-for='%s']";
+	public static final String ERROR_FIELD_MESSAGE = "//span[@class='field-validation-error']//span[@id='%s-error']";
+	public static final String ERROR_FORM_MESAGE = "//div[@class='message-error validation-summary-errors']";
 }
