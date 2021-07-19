@@ -44,6 +44,7 @@ public class BaseTest {
 		}
 		
 		driver.get(url);
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return driver;
 	}
