@@ -78,14 +78,14 @@ public class RegisterPageObject extends BasePage{
 		return PageGenerator.getHomePage(driver);
 	}
 
-	public String getErrorFieldMessage(String fieldName) {
-		waitForElementVisible(driver, RegisterPageUI.ERROR_FIELD_MESSAGE, fieldName);
-		return getElementText(driver, RegisterPageUI.ERROR_FIELD_MESSAGE, fieldName);
+	public String getErrorFieldMessageRegister(String fieldName) {
+		waitForElementVisible(driver, RegisterPageUI.ERROR_FIELD_MESSAGE_REGISTER, fieldName);
+		return getElementText(driver, RegisterPageUI.ERROR_FIELD_MESSAGE_REGISTER, fieldName);
 	}
 
-	public String getErrorFormMessage() {
-		waitForElementVisible(driver, RegisterPageUI.ERROR_FORM_MESAGE);
-		return getElementText(driver, RegisterPageUI.ERROR_FORM_MESAGE);
+	public String getErrorFormMessageRegister() {
+		waitForElementVisible(driver, RegisterPageUI.ERROR_FORM_MESAGE_REGISTER);
+		return getElementText(driver, RegisterPageUI.ERROR_FORM_MESAGE_REGISTER);
 	}
 
 }

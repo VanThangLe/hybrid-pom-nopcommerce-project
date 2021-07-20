@@ -14,6 +14,6 @@ public class RegisterPageUI {
 	public static final String REGISTER_BUTTON = "//button[@id='register-button']";
 	public static final String REGISTERED_SUCCESS_MESSAGE = "//div[@class='result' and text()='Your registration completed']";
 	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
-	public static final String ERROR_FIELD_MESSAGE = "//span[@class='field-validation-error']//span[@id='%s-error']";
-	public static final String ERROR_FORM_MESAGE = "//div[@class='message-error validation-summary-errors']";
+	public static final String ERROR_FIELD_MESSAGE_REGISTER = "//span[@class='field-validation-error']//span[@id='%s-error']";
+	public static final String ERROR_FORM_MESAGE_REGISTER = "//div[@class='message-error validation-summary-errors']";
 }
