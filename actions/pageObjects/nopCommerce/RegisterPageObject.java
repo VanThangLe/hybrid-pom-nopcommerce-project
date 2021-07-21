@@ -12,9 +12,9 @@ public class RegisterPageObject extends BasePage{
 		this.driver = _driver;
 	}
 
-	public void clickToGenderMaleRadio() {
-		waitForElementClickAble(driver, RegisterPageUI.GENDER_MALE_RADIO);
-		clickToElement(driver, RegisterPageUI.GENDER_MALE_RADIO);
+	public void clickToGenderRadio(String gender) {
+		waitForElementClickAble(driver, RegisterPageUI.GENDER_RADIO, gender);
+		clickToElement(driver, RegisterPageUI.GENDER_RADIO, gender);
 	}
 
 	public void enterToFirstNameTextbox(String firstName) {
@@ -87,5 +87,4 @@ public class RegisterPageObject extends BasePage{
 		waitForElementVisible(driver, RegisterPageUI.ERROR_FORM_MESAGE_REGISTER);
 		return getElementText(driver, RegisterPageUI.ERROR_FORM_MESAGE_REGISTER);
 	}
-
 }

@@ -37,24 +37,33 @@ public class User_01_Register extends BaseTest {
 	
 	@Test
 	public void TC_02_Register_With_Invalid_Email() {
-		registerPage.enterToEmailTextbox("automation");
+		registerPage.enterToEmailTextbox("thanglv");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Email"), "Wrong email");
 	}
 	
 	@Test
-	public void TC_03_Register_With_Exist_Email() {
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		String email = "automationfc.hn" + getRandomNumber() + "@hotmail.com";
-		registerPage.enterToEmailTextbox(email);
+	public void TC_03_Register_With_Valid_Email_And_Password() {
+		registerPage = homePage.clickToRegisterLink();
+		registerPage.clickToGenderRadio("male");
+		registerPage.enterToFirstNameTextbox("Thang");
+		registerPage.enterToLastNameTextbox("Le Van");
+		registerPage.selectDayDropdown("07");
+		registerPage.selectMonthDropdown("July");
+		registerPage.selectYearDropdown("1996");
+		registerPage.enterToEmailTextbox("thanglv@hotmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
 		registerPage.clickToRegisterButton();
-		registerPage.clickToLogoutLink();
+		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
+		homePage = registerPage.clickToLogoutLink();
+	}
+	
+	@Test
+	public void TC_04_Register_With_Exist_Email() {
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox(email);
+		registerPage.enterToFirstNameTextbox("Thang");
+		registerPage.enterToLastNameTextbox("Le Van");
+		registerPage.enterToEmailTextbox("thanglv@hotmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
 		registerPage.clickToRegisterButton();
@@ -62,11 +71,10 @@ public class User_01_Register extends BaseTest {
 	}
 	
 	@Test
-	public void TC_04_Register_With_Password_More_Than_6_Characters() {
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc.hn1.vn@hotmail.com");
-		registerPage.enterToCompanyTextbox("Automation Testing");
+	public void TC_05_Register_With_Password_More_Than_6_Characters() {
+		registerPage.enterToFirstNameTextbox("Thang");
+		registerPage.enterToLastNameTextbox("Le Van");
+		registerPage.enterToEmailTextbox("thanglevan@yahoo.com");
 		registerPage.enterToPasswordTextbox("1234");
 		registerPage.enterToConfirmPasswordTextbox("1234");
 		registerPage.clickToRegisterButton();
@@ -74,27 +82,14 @@ public class User_01_Register extends BaseTest {
 	}
 	
 	@Test
-	public void TC_05_Register_With_Confirm_Password_Differ_Password() {
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc.hn1.vn@hotmail.com");
+	public void TC_06_Register_With_Confirm_Password_Differ_Password() {
+		registerPage.enterToFirstNameTextbox("Thang");
+		registerPage.enterToLastNameTextbox("Le Van");
+		registerPage.enterToEmailTextbox("thanglevan@yahoo.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123abc");
 		registerPage.clickToRegisterButton();
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("ConfirmPassword"), "The password and confirmation password do not match.");
-	}
-	
-	@Test
-	public void TC_06_Register_With_Valid_Email_And_Password() {
-		registerPage = homePage.clickToRegisterLink();
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc.hn" + getRandomNumber() + "@hotmail.com");
-		registerPage.enterToPasswordTextbox("123456");
-		registerPage.enterToConfirmPasswordTextbox("123456");
-		registerPage.clickToRegisterButton();
-		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
-		homePage = registerPage.clickToLogoutLink();
 	}
 	
 	@AfterClass
