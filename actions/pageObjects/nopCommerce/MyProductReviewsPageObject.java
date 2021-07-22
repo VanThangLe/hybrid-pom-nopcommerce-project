@@ -12,13 +12,8 @@ public class MyProductReviewsPageObject extends BasePage{
 		this.driver = _driver;
 	}
 
-	public String getMyProductReviewText() {
-		waitForElementVisible(driver, MyProductReviewsPageUI.REVIEW_TEXT_VALUE);
-		return getElementText(driver, MyProductReviewsPageUI.REVIEW_TEXT_VALUE);
-	}
-
-	public String getMyProductReviewTitle() {
-		waitForElementVisible(driver, MyProductReviewsPageUI.REVIEW_TITLE_VALUE);
-		return getElementText(driver, MyProductReviewsPageUI.REVIEW_TITLE_VALUE);
+	public String getMyProductTitleValue() {
+		waitForElementVisible(driver, MyProductReviewsPageUI.PRODUCT_REVIEW_TITLE_VALUE);
+		return getElementText(driver, MyProductReviewsPageUI.PRODUCT_REVIEW_TITLE_VALUE);
 	}
 }

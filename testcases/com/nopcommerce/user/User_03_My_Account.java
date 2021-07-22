@@ -133,8 +133,7 @@ public class User_03_My_Account extends BaseTest {
 		Assert.assertTrue(productReviewPage.isProductReviewAdded());
 		customerInfoPage = productReviewPage.clickToMyAccountLink();
 		myProductReviewsPage = PageGenerator.getMyProductReviewsPage(driver);
-		Assert.assertEquals(myProductReviewsPage.getMyProductReviewTitle(), "Computer Case");
-		Assert.assertEquals(myProductReviewsPage.getMyProductReviewText(), "Fast");
+		Assert.assertEquals(myProductReviewsPage.getMyProductTitleValue(), "Build your own computer");
 	}
 	
 	@AfterClass
