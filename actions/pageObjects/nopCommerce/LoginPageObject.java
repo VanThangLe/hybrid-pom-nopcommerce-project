@@ -26,17 +26,14 @@ public class LoginPageObject extends BasePage{
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		return PageGenerator.getHomePage(driver);
 	}
+	
 	public String getErrorFieldMessageLogin(String fieldName) {
 		waitForElementVisible(driver, LoginPageUI.ERROR_FIELD_MESSAGE_LOGIN, fieldName);
 		return getElementText(driver, LoginPageUI.ERROR_FIELD_MESSAGE_LOGIN, fieldName);
 	}
+	
 	public String getErrorFormMessageLogin() {
 		waitForElementVisible(driver, LoginPageUI.ERROR_FORM_MESSAGE_LOGIN);
 		return getElementText(driver, LoginPageUI.ERROR_FORM_MESSAGE_LOGIN);
 	}
-	public boolean isTopicBlockTitleDisplayed() {
-		waitForElementVisible(driver, LoginPageUI.TOPIC_BLOCK_TITLE);
-		return isElementDisplayed(driver, LoginPageUI.TOPIC_BLOCK_TITLE);
-	}
-
 }

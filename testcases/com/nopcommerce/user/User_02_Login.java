@@ -33,14 +33,14 @@ public class User_02_Login extends BaseTest {
 	
 	@Test
 	public void TC_02_Login_With_Invalid_Email() {
-		loginPage.enterToEmailTextbox("thanglv");
+		loginPage.enterToEmailTextbox("automationfc.vn");
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorFieldMessageLogin("Email"), "Wrong email");
 	}
 	
 	@Test
 	public void TC_03_Login_With_Not_Registered_Email() {
-		loginPage.enterToEmailTextbox("thanglv1996@hotmail.com");
+		loginPage.enterToEmailTextbox("automationfc@gmail.com");
 		loginPage.enterToPasswordTextbox("123abc");
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "No customer account found");
@@ -48,7 +48,7 @@ public class User_02_Login extends BaseTest {
 	
 	@Test
 	public void TC_04_Login_With_Blank_Password() {
-		loginPage.enterToEmailTextbox("thanglv@hotmail.com");
+		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		loginPage.enterToPasswordTextbox("");
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
@@ -56,7 +56,7 @@ public class User_02_Login extends BaseTest {
 	
 	@Test
 	public void TC_05_Login_With_Invalid_Password() {
-		loginPage.enterToEmailTextbox("thanglv@hotmail.com");
+		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		loginPage.enterToPasswordTextbox("12");
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
@@ -64,10 +64,10 @@ public class User_02_Login extends BaseTest {
 	
 	@Test
 	public void TC_06_Login_With_Valid_Email_And_Password() {
-		loginPage.enterToEmailTextbox("thanglv@hotmail.com");
+		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		loginPage.enterToPasswordTextbox("123456");
-		loginPage.clickToLoginButton();
-		Assert.assertTrue(loginPage.isTopicBlockTitleDisplayed());
+		homePage = loginPage.clickToLoginButton();
+		Assert.assertTrue(homePage.isTopicBlockTitleDisplayed());
 	}
 	
 	@AfterClass

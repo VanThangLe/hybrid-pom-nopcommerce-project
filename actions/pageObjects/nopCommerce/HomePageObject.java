@@ -29,5 +29,15 @@ public class HomePageObject extends BasePage {
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGenerator.getCustomerInforPage(driver);
 	}
+	
+	public boolean isTopicBlockTitleDisplayed() {
+		waitForElementVisible(driver, HomePageUI.TOPIC_BLOCK_TITLE);
+		return isElementDisplayed(driver, HomePageUI.TOPIC_BLOCK_TITLE);
+	}
 
+	public ProductDetailPageObject clickToTitleProduct(String productTitle) {
+		waitForElementVisible(driver, HomePageUI.PRODUCT_TITLE, productTitle);
+		clickToElement(driver, HomePageUI.PRODUCT_TITLE, productTitle);
+		return PageGenerator.getProductDetailPage(driver);
+	}
 }

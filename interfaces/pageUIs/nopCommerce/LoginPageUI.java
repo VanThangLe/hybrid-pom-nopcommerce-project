@@ -6,5 +6,4 @@ public class LoginPageUI {
 	public static final String LOGIN_BUTTON = "//button[text()='Log in']";
 	public static final String ERROR_FIELD_MESSAGE_LOGIN = "//span[@class='field-validation-error']//span[@id='%s-error']";
 	public static final String ERROR_FORM_MESSAGE_LOGIN = "//div[@class='message-error validation-summary-errors']";
-	public static final String TOPIC_BLOCK_TITLE = "//h2[contains(text(),'Welcome to our store')]";
 }

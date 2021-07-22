@@ -9,5 +9,5 @@ public class CustomerInfoPageUI {
 	public static final String YEAR_DROPDOWN = "//select[@name='DateOfBirthYear']";
 	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
 	public static final String COMPANY_TEXTBOX = "//input[@id='Company']";
-	public static final String SAVE_BUTTON = "//button[@id='save-info-button']";
+	public static final String SAVE_CUSTOMER_INFO_BUTTON = "//button[@id='save-info-button']";
 }

@@ -92,8 +92,8 @@ public class CustomerInfoPageObject extends BasePage {
 		selectItemInDefaultDropdown(driver, CustomerInfoPageUI.YEAR_DROPDOWN, year);
 	}
 	
-	public void clickSaveButton() {
-		waitForElementClickAble(driver, CustomerInfoPageUI.SAVE_BUTTON);
-		clickToElement(driver, CustomerInfoPageUI.SAVE_BUTTON);
+	public void clickToSaveCustomerInfoButton() {
+		waitForElementClickAble(driver, CustomerInfoPageUI.SAVE_CUSTOMER_INFO_BUTTON);
+		clickToElement(driver, CustomerInfoPageUI.SAVE_CUSTOMER_INFO_BUTTON);
 	}
 }
