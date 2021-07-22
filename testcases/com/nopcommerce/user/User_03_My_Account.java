@@ -42,10 +42,10 @@ public class User_03_My_Account extends BaseTest {
 	@Test
 	public void TC_01_Update_Customer_Info() {
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.clickToGenderRadio("female");
+		registerPage.clickToGenderRadio("male");
 		registerPage.enterToFirstNameTextbox("Automation");
 		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
+		registerPage.enterToEmailTextbox("automationfc.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
 		registerPage.clickToRegisterButton();
@@ -67,11 +67,11 @@ public class User_03_My_Account extends BaseTest {
 		Assert.assertTrue(customerInfoPage.isGenderRadioSelected("female"));
 		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "Automation");
 		Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), "FC");
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "automationfc.vn@gmail.com");
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "Automation FC");
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "1");
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "January");
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "1999");
+		Assert.assertEquals(customerInfoPage.getEmailTextboxValue(), "automationfc.vn@gmail.com");
+		Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), "Automation FC");
+		Assert.assertEquals(customerInfoPage.getDayDropdownValue(), "1");
+		Assert.assertEquals(customerInfoPage.getMonthDropdownValue(), "January");
+		Assert.assertEquals(customerInfoPage.getYearDropdownValue(), "1999");
 	}
 	
 	@Test
