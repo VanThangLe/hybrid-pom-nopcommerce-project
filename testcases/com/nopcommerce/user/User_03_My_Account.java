@@ -31,7 +31,6 @@ public class User_03_My_Account extends BaseTest {
 	ProductDetailPageObject productDetailPage;
 	ProductReviewPageObject productReviewPage;
 	
-	
 	@Parameters({"browser", "url"})
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
