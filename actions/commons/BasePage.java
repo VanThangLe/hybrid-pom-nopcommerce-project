@@ -454,6 +454,16 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.DYNAMIC_SIDE_BAR_PAGE_LINK, pageName);
 	}
 	
+	public void enterToTextboxByID(WebDriver driver, String textboxIDName, String value) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxIDName);
+		sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxIDName);
+	}
+	
+	public void clickToButtonByID(WebDriver driver, String buttonIDName) {
+		waitForElementClickAble(driver, BasePageUI.BUTTON_BY_ID, buttonIDName);
+		clickToElement(driver, BasePageUI.BUTTON_BY_ID, buttonIDName);
+	}
+	
 	private Alert alert;
 	private Select select;
 	private Actions action;

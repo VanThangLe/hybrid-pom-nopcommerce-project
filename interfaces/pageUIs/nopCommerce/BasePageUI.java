@@ -10,4 +10,6 @@ public class BasePageUI {
 	public static final String CHANGE_PASSWORD_PAGE_LINK = "//div[@class='listbox']//a[text()='Change password']";
 	public static final String MY_PRODUCT_REVIEWS_PAGE_LINK = "//div[@class='listbox']//a[text()='My product reviews']";
 	public static final String DYNAMIC_SIDE_BAR_PAGE_LINK = "//div[@class='listbox']//a[text()='%s']";
+	public static final String TEXTBOX_BY_ID = "//input[@id='%s']";
+	public static final String BUTTON_BY_ID = "//input[@id='%s']";
 }

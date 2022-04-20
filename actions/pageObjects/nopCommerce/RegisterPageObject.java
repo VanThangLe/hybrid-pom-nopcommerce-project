@@ -62,11 +62,6 @@ public class RegisterPageObject extends BasePage{
 		sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
 	}
 
-	public void clickToRegisterButton() {
-		waitForElementClickAble(driver, RegisterPageUI.REGISTER_BUTTON);
-		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
-	}
-
 	public boolean isRegisterSuccessMessageDisplayed() {
 		waitForElementVisible(driver, RegisterPageUI.REGISTERED_SUCCESS_MESSAGE);
 		return isElementDisplayed(driver, RegisterPageUI.REGISTERED_SUCCESS_MESSAGE);

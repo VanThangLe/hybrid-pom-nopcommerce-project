@@ -27,7 +27,7 @@ public class User_01_Register extends BaseTest {
 	@Test
 	public void TC_01_Register_With_Empty_Data() {
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("FirstName"), "First name is required.");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("LastName"), "Last name is required.");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Email"), "Email is required.");
@@ -50,7 +50,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
 		homePage = registerPage.clickToLogoutLink();
 	}
@@ -63,7 +63,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertEquals(registerPage.getErrorFormMessageRegister(), "The specified email already exists");
 	}
 	
@@ -74,7 +74,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("1234");
 		registerPage.enterToConfirmPasswordTextbox("1234");
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
 	}
 	
@@ -85,7 +85,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123abc");
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	

@@ -47,7 +47,7 @@ public class User_03_My_Account extends BaseTest {
 		registerPage.enterToEmailTextbox("automationfc.vn@gmail.com");
 		registerPage.enterToPasswordTextbox("123456");
 		registerPage.enterToConfirmPasswordTextbox("123456");
-		registerPage.clickToRegisterButton();
+		registerPage.clickToButtonByID(driver, "register-button");
 		homePage = registerPage.clickToLogoutLink();
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
