@@ -16,6 +16,7 @@ public class User_01_Register extends BaseTest {
 	WebDriver driver;
 	HomePageObject homePage;
 	RegisterPageObject registerPage;
+	String email, password;
 	
 	@Parameters({"browser", "url"})
 	@BeforeClass
@@ -28,65 +29,67 @@ public class User_01_Register extends BaseTest {
 	public void TC_01_Register_With_Empty_Data() {
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.clickToButtonByID(driver, "register-button");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("FirstName"), "First name is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("LastName"), "Last name is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Email"), "Email is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Password"), "Password is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("ConfirmPassword"), "Password is required.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "FirstName"), "First name is required.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "LastName"), "Last name is required.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Email is required.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password is required.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "Password is required.");
 	}
 	
 	@Test
 	public void TC_02_Register_With_Invalid_Email() {
-		registerPage.enterToEmailTextbox("automationfc.vn");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Email"), "Wrong email");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfc.vn");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
 	}
 	
 	@Test
 	public void TC_03_Register_With_Valid_Email_And_Password() {
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.clickToGenderRadio("female");
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		registerPage.enterToPasswordTextbox("123456");
-		registerPage.enterToConfirmPasswordTextbox("123456");
+		registerPage.clickToRadioByLabel(driver, "Male");
+		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
+		registerPage.enterToTextboxByID(driver, "LastName", "FC");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
+		registerPage.enterToTextboxByID(driver, "Password", "123456");
+		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
 		registerPage.clickToButtonByID(driver, "register-button");
 		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
-		homePage = registerPage.clickToLogoutLink();
+		homePage = registerPage.logoutToSystem(driver);
 	}
 	
 	@Test
 	public void TC_04_Register_With_Exist_Email() {
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		registerPage.enterToPasswordTextbox("123456");
-		registerPage.enterToConfirmPasswordTextbox("123456");
+		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
+		registerPage.enterToTextboxByID(driver, "LastName", "FC");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
+		registerPage.enterToTextboxByID(driver, "Password", "123456");
+		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
 		registerPage.clickToButtonByID(driver, "register-button");
-		Assert.assertEquals(registerPage.getErrorFormMessageRegister(), "The specified email already exists");
+		Assert.assertEquals(registerPage.getErrorFormMessage(driver), "The specified email already exists");
 	}
 	
 	@Test
-	public void TC_05_Register_With_Password_More_Than_6_Characters() {
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		registerPage.enterToPasswordTextbox("1234");
-		registerPage.enterToConfirmPasswordTextbox("1234");
+	public void TC_05_Register_With_Password_Less_Than_6_Characters() {
+		registerPage.refreshCurrentPage(driver);
+		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
+		registerPage.enterToTextboxByID(driver, "LastName", "FC");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
+		registerPage.enterToTextboxByID(driver, "Password", "1234");
+		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "1234");
 		registerPage.clickToButtonByID(driver, "register-button");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
 	}
 	
 	@Test
-	public void TC_06_Register_With_Confirm_Password_Differ_Password() {
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		registerPage.enterToPasswordTextbox("123456");
-		registerPage.enterToConfirmPasswordTextbox("123abc");
+	public void TC_06_Register_With_Confirm_Password_Different_Password() {
+		registerPage.refreshCurrentPage(driver);
+		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
+		registerPage.enterToTextboxByID(driver, "LastName", "FC");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
+		registerPage.enterToTextboxByID(driver, "Password", "123456");
+		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123abc");
 		registerPage.clickToButtonByID(driver, "register-button");
-		Assert.assertEquals(registerPage.getErrorFieldMessageRegister("ConfirmPassword"), "The password and confirmation password do not match.");
+		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	
 	@AfterClass

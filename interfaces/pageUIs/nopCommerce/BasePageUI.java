@@ -1,15 +1,21 @@
 package pageUIs.nopCommerce;
 
 public class BasePageUI {
-	public static final String CUSTOMER_INFOR_PAGE_LINK = "//div[@class='listbox']//a[text()='Customer info']";
-	public static final String ADDRESSES_PAGE_LINK = "//div[@class='listbox']//a[text()='Addresses']";
-	public static final String ORDERS_PAGE_LINK = "//div[@class='listbox']//a[text()='Orders']";
-	public static final String DOWNLOADABLE_PRODUCTS_PAGE_LINK = "//div[@class='listbox']//a[text()='Downloadable products']";
-	public static final String BACK_IN_STOCK_SUBCRIPTIONS_PAGE_LINK = "//div[@class='listbox']//a[text()='Back in stock subscriptions']";
-	public static final String REWARD_POINTS_PAGE_LINK = "//div[@class='listbox']//a[text()='Reward points']";
-	public static final String CHANGE_PASSWORD_PAGE_LINK = "//div[@class='listbox']//a[text()='Change password']";
-	public static final String MY_PRODUCT_REVIEWS_PAGE_LINK = "//div[@class='listbox']//a[text()='My product reviews']";
 	public static final String DYNAMIC_SIDE_BAR_PAGE_LINK = "//div[@class='listbox']//a[text()='%s']";
 	public static final String TEXTBOX_BY_ID = "//input[@id='%s']";
 	public static final String BUTTON_BY_ID = "//input[@id='%s']";
+	public static final String RADIO_BY_LABEL = "//label[text()='%s']/preceding-sibling::input";
+	public static final String DROPDOWN_BY_NAME = "//select[@name='%s']";
+	public static final String CHECKBOX_BY_LABEL = "//label[text()='%s']/following-sibling::input";
+	public static final String TABLE_HEADER_BY_ID_AND_NAME = "//table[@id='%s']//th[string()='%s']/preceding-sibling::th";
+	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//table[@id='%s']/tbody/tr[%s]/td[%s]";
+	public static final String ANY_FIELD_BY_ID = "//*[@id='%s']";
+	public static final String ERROR_FIELD_MESSAGE_REGISTER_BY_ID = "//span[@class='field-validation-error']//span[@id='%s-error']";
+	
+	public static final String ERROR_FORM_MESAGE_REGISTER = "//div[@class='message-error validation-summary-errors']";
+	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
+	public static final String EMAIL_LOGIN_TEXTBOX = "//input[@id='Email']";
+	public static final String PASSWORD_LOGIN_TEXTBOX = "//input[@id='Password']";
+	public static final String UPLOAD_FILE = "//input[@type='file']";
+	public static final String LOGIN_BUTTON = "//button[contains(text(),'Log in')]";
 }

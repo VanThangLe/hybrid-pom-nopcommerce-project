@@ -27,46 +27,37 @@ public class User_02_Login extends BaseTest {
 	@Test
 	public void TC_01_Login_With_Empty_Data() {
 		loginPage = homePage.clickToLoginLink();
-		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorFieldMessageLogin("Email"), "Please enter your email");
+		loginPage.loginToSystem(driver, "", "");
+		Assert.assertEquals(loginPage.getErrorFieldMessageByID(driver, "Email"), "Please enter your email");
 	}
 	
 	@Test
 	public void TC_02_Login_With_Invalid_Email() {
-		loginPage.enterToEmailTextbox("automationfc.vn");
-		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorFieldMessageLogin("Email"), "Wrong email");
+		loginPage.loginToSystem(driver, "automationfc@gmail.com", "");
+		Assert.assertEquals(loginPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
 	}
 	
 	@Test
 	public void TC_03_Login_With_Not_Registered_Email() {
-		loginPage.enterToEmailTextbox("automationfc@gmail.com");
-		loginPage.enterToPasswordTextbox("123abc");
-		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "No customer account found");
+		loginPage.loginToSystem(driver, "automationfc@gmail.com", "123abc");
+		Assert.assertEquals(loginPage.getErrorFormMessage(driver), "Login was unsuccessful. Please correct the errors and try again.\n" + "No customer account found");
 	}
 	
 	@Test
 	public void TC_04_Login_With_Blank_Password() {
-		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("");
-		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
+		loginPage.loginToSystem(driver, "automationfc1.vn@gmail.com", "");
+		Assert.assertEquals(loginPage.getErrorFormMessage(driver), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
 	}
 	
 	@Test
 	public void TC_05_Login_With_Invalid_Password() {
-		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("12");
-		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
+		loginPage.loginToSystem(driver, "automationfc1.vn@gmail.com", "12");
+		Assert.assertEquals(loginPage.getErrorFormMessage(driver), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
 	}
 	
 	@Test
 	public void TC_06_Login_With_Valid_Email_And_Password() {
-		loginPage.enterToEmailTextbox("automationfc1.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+		homePage = loginPage.loginToSystem(driver, "automationfc1.vn@gmail.com", "123456");
 		Assert.assertTrue(homePage.isTopicBlockTitleDisplayed());
 	}
 	
