@@ -36,33 +36,26 @@ public class User_03_My_Account extends BaseTest {
 	public void beforeClass(String browserName, String url) {
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGenerator.getHomePage(driver);
+		
+		loginPage = homePage.clickToLoginLink();
+		loginPage.loginToSystem(driver, "automationfanclub.vn@gmail.com", "123456");
+		homePage = loginPage.clickToButtonByLabel("Log in");
 	}
 	
 	@Test
 	public void TC_01_Update_Customer_Info() {
-		registerPage = homePage.clickToRegisterLink();
-		registerPage.clickToGenderRadio("male");
-		registerPage.enterToFirstNameTextbox("Automation");
-		registerPage.enterToLastNameTextbox("FC");
-		registerPage.enterToEmailTextbox("automationfc.vn@gmail.com");
-		registerPage.enterToPasswordTextbox("123456");
-		registerPage.enterToConfirmPasswordTextbox("123456");
-		registerPage.clickToButtonByID(driver, "register-button");
-		homePage = registerPage.clickToLogoutLink();
-		loginPage = homePage.clickToLoginLink();
-		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
 		customerInfoPage = homePage.clickToMyAccountLink();
+		
 		customerInfoPage.updateGenderRadio("female");
-		customerInfoPage.updateFirstNameTextbox("Automation");
-		customerInfoPage.updateLastNameTextbox("FC");
+		customerInfoPage.enterToTextboxByID(driver, "FirstName", "Automation");
+		customerInfoPage.enterToTextboxByID(driver, "LastName", "FC");
 		customerInfoPage.updateDayDropdown("1");
 		customerInfoPage.updateMonthDropdown("January");
 		customerInfoPage.updateYearDropdown("1999");
-		customerInfoPage.updateEmailTextbox("automationfc.vn@gmail.com");
-		customerInfoPage.updateCompanyTextbox("Automation FC");
+		customerInfoPage.enterToTextboxByID(driver, "Email", "automationfc.vn@gmail.com");
+		customerInfoPage.enterToTextboxByID(driver, "CompanyName", "Automation FC");
 		customerInfoPage.clickToSaveCustomerInfoButton();
+		
 		Assert.assertTrue(customerInfoPage.isGenderRadioSelected("female"));
 		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), "Automation");
 		Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), "FC");
@@ -76,6 +69,7 @@ public class User_03_My_Account extends BaseTest {
 	@Test
 	public void TC_02_Add_Address() {
 		addressesPage = PageGenerator.getAddressesPage(driver);
+		
 		addressesPage.clickToAddNewButton();
 		addressesPage.addAddressFirstNameTextbox("Automation");
 		addressesPage.addAddressLastNameTextbox("FC");
@@ -90,6 +84,7 @@ public class User_03_My_Account extends BaseTest {
 		addressesPage.addAddressPhoneNumberTextbox("0123456789");
 		addressesPage.addAddressFaxNumberTextbox("0987654321");
 		addressesPage.clickToSaveAddressButton();
+		
 		Assert.assertEquals(addressesPage.getAddressFullNameValue(), "Automation FC");
 		Assert.assertEquals(addressesPage.getAddressEmailValue(), "Email: automationfc.vn@gmail.com");
 		Assert.assertEquals(addressesPage.getAddressCompanyValue(), "Automation FC");
@@ -108,16 +103,21 @@ public class User_03_My_Account extends BaseTest {
 		changePasswordPage.enterToNewPasswordTextbox("654321");
 		changePasswordPage.enterToConfirmNewPasswordTextbox("654321");
 		changePasswordPage.clickToChangePasswordButton();
+		
 		Assert.assertEquals(changePasswordPage.getBarNotificationSuccess(), "Password was changed");
+		
 		changePasswordPage.clickToCloseNotificationButton();
 		loginPage = changePasswordPage.clickToLogoutLink();
 		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
 		loginPage.enterToPasswordTextbox("123456");
 		loginPage.clickToLoginButton();
+		
 		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
+		
 		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
 		loginPage.enterToPasswordTextbox("654321");
 		homePage = loginPage.clickToLoginButton();
+		
 		Assert.assertTrue(homePage.isTopicBlockTitleDisplayed());
 	}
 	
@@ -129,9 +129,12 @@ public class User_03_My_Account extends BaseTest {
 		productReviewPage.enterToReviewTextTextbox("Fast");
 		productReviewPage.clickToRatingRadio("5");
 		productReviewPage.clickToSubmitReviewButton();
+		
 		Assert.assertTrue(productReviewPage.isProductReviewAdded());
+		
 		customerInfoPage = productReviewPage.clickToMyAccountLink();
 		myProductReviewsPage = PageGenerator.getMyProductReviewsPage(driver);
+		
 		Assert.assertEquals(myProductReviewsPage.getMyProductTitleValue(), "Build your own computer");
 	}
 	

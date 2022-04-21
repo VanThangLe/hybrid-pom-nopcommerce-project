@@ -29,6 +29,7 @@ public class User_01_Register extends BaseTest {
 	public void TC_01_Register_With_Empty_Data() {
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.clickToButtonByID(driver, "register-button");
+		
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "FirstName"), "First name is required.");
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "LastName"), "Last name is required.");
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Email is required.");
@@ -39,6 +40,7 @@ public class User_01_Register extends BaseTest {
 	@Test
 	public void TC_02_Register_With_Invalid_Email() {
 		registerPage.enterToTextboxByID(driver, "Email", "automationfc.vn");
+		
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
 	}
 	
@@ -48,10 +50,11 @@ public class User_01_Register extends BaseTest {
 		registerPage.clickToRadioByLabel(driver, "Male");
 		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
 		registerPage.enterToTextboxByID(driver, "LastName", "FC");
-		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
+		registerPage.enterToTextboxByID(driver, "Email", "automationfanclub.vn@gmail.com");
 		registerPage.enterToTextboxByID(driver, "Password", "123456");
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
 		registerPage.clickToButtonByID(driver, "register-button");
+		
 		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
 		homePage = registerPage.logoutToSystem(driver);
 	}
@@ -65,6 +68,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "Password", "123456");
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
 		registerPage.clickToButtonByID(driver, "register-button");
+		
 		Assert.assertEquals(registerPage.getErrorFormMessage(driver), "The specified email already exists");
 	}
 	
@@ -77,6 +81,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "Password", "1234");
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "1234");
 		registerPage.clickToButtonByID(driver, "register-button");
+		
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
 	}
 	
@@ -89,6 +94,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "Password", "123456");
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123abc");
 		registerPage.clickToButtonByID(driver, "register-button");
+		
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	
