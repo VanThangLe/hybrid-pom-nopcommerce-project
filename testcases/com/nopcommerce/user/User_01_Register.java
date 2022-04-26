@@ -21,12 +21,14 @@ public class User_01_Register extends BaseTest {
 	@Parameters({"browser", "url"})
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
+		log.info("Pre-condition: Open browser '" + browserName + "'and navigate to '" + url + "'");
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGenerator.getHomePage(driver);
 	}
 	
 	@Test
 	public void TC_01_Register_With_Empty_Data() {
+		log.info("Testcase 1 - Step 01: Open 'Employee List' page");
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.clickToButtonByID(driver, "register-button");
 		
@@ -39,17 +41,19 @@ public class User_01_Register extends BaseTest {
 	
 	@Test
 	public void TC_02_Register_With_Invalid_Email() {
+		registerPage.refreshCurrentPage(driver);
 		registerPage.enterToTextboxByID(driver, "Email", "automationfc.vn");
+		registerPage.clickToButtonByID(driver, "register-button");
 		
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
 	}
 	
 	@Test
 	public void TC_03_Register_With_Valid_Email_And_Password() {
-		registerPage = homePage.clickToRegisterLink();
+		registerPage.refreshCurrentPage(driver);
 		registerPage.clickToRadioByLabel(driver, "Male");
-		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
-		registerPage.enterToTextboxByID(driver, "LastName", "FC");
+		registerPage.enterToTextboxByID(driver, "FirstName", "Automation FanClub");
+		registerPage.enterToTextboxByID(driver, "LastName", "FanClub");
 		registerPage.enterToTextboxByID(driver, "Email", "automationfanclub.vn@gmail.com");
 		registerPage.enterToTextboxByID(driver, "Password", "123456");
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
@@ -98,8 +102,10 @@ public class User_01_Register extends BaseTest {
 		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	
-	@AfterClass
-	public void afterClass() {
-		driver.quit();
+	@Parameters({ "browser" })
+	@AfterClass(alwaysRun = true)
+	public void cleanBrowser(String browserName) {
+		log.info("Post-condition: Close browser '" + browserName + "'");
+		cleanDriverInstance();
 	}
 }

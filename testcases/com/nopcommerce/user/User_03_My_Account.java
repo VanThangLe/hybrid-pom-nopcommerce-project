@@ -46,7 +46,7 @@ public class User_03_My_Account extends BaseTest {
 	public void TC_01_Update_Customer_Info() {
 		customerInfoPage = homePage.clickToMyAccountLink();
 		
-		customerInfoPage.updateGenderRadio("female");
+		customerInfoPage.clickToRadioByLabel(driver, "female");
 		customerInfoPage.enterToTextboxByID(driver, "FirstName", "Automation");
 		customerInfoPage.enterToTextboxByID(driver, "LastName", "FC");
 		customerInfoPage.updateDayDropdown("1");
