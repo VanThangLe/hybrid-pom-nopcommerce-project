@@ -99,24 +99,20 @@ public class User_03_My_Account extends BaseTest {
 	@Test
 	public void TC_03_Change_Password() {
 		changePasswordPage = PageGenerator.getChangePasswordPage(driver);
-		changePasswordPage.enterToOldPasswordTextbox("123456");
-		changePasswordPage.enterToNewPasswordTextbox("654321");
-		changePasswordPage.enterToConfirmNewPasswordTextbox("654321");
+		changePasswordPage.enterToTextboxByID(driver, "OldPassword", "123456");
+		changePasswordPage.enterToTextboxByID(driver, "NewPassword", "654321");
+		changePasswordPage.enterToTextboxByID(driver, "ConfirmNewPassword", "654321");
 		changePasswordPage.clickToChangePasswordButton();
 		
 		Assert.assertEquals(changePasswordPage.getBarNotificationSuccess(), "Password was changed");
 		
 		changePasswordPage.clickToCloseNotificationButton();
 		loginPage = changePasswordPage.clickToLogoutLink();
-		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("123456");
-		loginPage.clickToLoginButton();
+		loginPage.loginToSystem(driver, "automationfc.vn@gmail.com", "123456");
 		
-		Assert.assertEquals(loginPage.getErrorFormMessageLogin(), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
+		Assert.assertEquals(loginPage.getErrorFormMessage(driver), "Login was unsuccessful. Please correct the errors and try again.\n" + "The credentials provided are incorrect");
 		
-		loginPage.enterToEmailTextbox("automationfc.vn@gmail.com");
-		loginPage.enterToPasswordTextbox("654321");
-		homePage = loginPage.clickToLoginButton();
+		loginPage.loginToSystem(driver, "automationfc.vn@gmail.com", "654321");
 		
 		Assert.assertTrue(homePage.isTopicBlockTitleDisplayed());
 	}

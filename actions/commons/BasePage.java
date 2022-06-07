@@ -497,19 +497,19 @@ public class BasePage {
 		return explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator, values)));
 	}
 	
-	public void clickToButtonByID(WebDriver driver, String buttonIDName) {
-		waitForElementClickAble(driver, BasePageUI.BUTTON_BY_ID, buttonIDName);
-		clickToElement(driver, BasePageUI.BUTTON_BY_ID, buttonIDName);
+	public void clickToButtonByID(WebDriver driver, String buttonID) {
+		waitForElementClickAble(driver, BasePageUI.BUTTON_BY_ID, buttonID);
+		clickToElement(driver, BasePageUI.BUTTON_BY_ID, buttonID);
 	}
 	
-	public void enterToTextboxByID(WebDriver driver, String textboxIDName, String value) {
-		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxIDName);
-		sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxIDName);
+	public void enterToTextboxByID(WebDriver driver, String textboxID, String value) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+		sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxID);
 	}
 	
-	public String getTextboxValueByID(WebDriver driver, String textboxIDName) {
-		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxIDName);
-		return getAttributeValue(driver, BasePageUI.TEXTBOX_BY_ID, "value", textboxIDName);
+	public String getTextboxValueByID(WebDriver driver, String textboxID) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+		return getAttributeValue(driver, BasePageUI.TEXTBOX_BY_ID, "value", textboxID);
 	}
 	
 	public void selectItemInDropdownByName(WebDriver driver, String dropdownName, String valueItem) {
@@ -522,24 +522,24 @@ public class BasePage {
 		return getFirstSelectedItemInDefaultDropdown(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownName);
 	}
 	
-	public void clickToCheckboxByLabel(WebDriver driver, String checkboxLabelName) {
-		waitForElementClickAble(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabelName);
-		checkToCheckboxOrRadio(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabelName);
+	public void clickToCheckboxByLabel(WebDriver driver, String checkboxLabel) {
+		waitForElementClickAble(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabel);
+		checkToCheckboxOrRadio(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabel);
 	}
 	
-	public boolean isCheckboxButtonSelectedByLabel(WebDriver driver, String checkboxLabelName) {
-		waitForElementVisible(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabelName);
-		return isElementSelected(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabelName);
+	public boolean isCheckboxButtonSelectedByLabel(WebDriver driver, String checkboxLabel) {
+		waitForElementVisible(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabel);
+		return isElementSelected(driver, BasePageUI.CHECKBOX_BY_LABEL, checkboxLabel);
 	}
 	
-	public void clickToRadioByLabel(WebDriver driver, String radioLabelName) {
-		waitForElementClickAble(driver, BasePageUI.RADIO_BY_LABEL, radioLabelName);
-		checkToCheckboxOrRadio(driver, BasePageUI.RADIO_BY_LABEL, radioLabelName);
+	public void clickToRadioByLabel(WebDriver driver, String radioLabel) {
+		waitForElementClickAble(driver, BasePageUI.RADIO_BY_LABEL, radioLabel);
+		checkToCheckboxOrRadio(driver, BasePageUI.RADIO_BY_LABEL, radioLabel);
 	}
 	
-	public boolean isRadioButtonSelectedByLabel(WebDriver driver, String radioLabelName) {
-		waitForElementVisible(driver, BasePageUI.RADIO_BY_LABEL, radioLabelName);
-		return isElementSelected(driver, BasePageUI.RADIO_BY_LABEL, radioLabelName);
+	public boolean isRadioButtonSelectedByLabel(WebDriver driver, String radioLabel) {
+		waitForElementVisible(driver, BasePageUI.RADIO_BY_LABEL, radioLabel);
+		return isElementSelected(driver, BasePageUI.RADIO_BY_LABEL, radioLabel);
 	}
 	
 	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String tableID, String headerName, String rowIndex) {

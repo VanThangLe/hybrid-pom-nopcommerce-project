@@ -12,21 +12,6 @@ public class ChangePasswordPageObject extends BasePage{
 		this.driver = _driver;
 	}
 
-	public void enterToOldPasswordTextbox(String oldPassword) {
-		waitForElementVisible(driver, ChangePasswordPageUI.OLD_PASSWORD);
-		sendkeyToElement(driver, ChangePasswordPageUI.OLD_PASSWORD, oldPassword);
-	}
-
-	public void enterToNewPasswordTextbox(String newPassword) {
-		waitForElementVisible(driver, ChangePasswordPageUI.NEW_PASSWORD);
-		sendkeyToElement(driver, ChangePasswordPageUI.NEW_PASSWORD, newPassword);
-	}
-
-	public void enterToConfirmNewPasswordTextbox(String confirmNewPassword) {
-		waitForElementVisible(driver, ChangePasswordPageUI.CONFIRM_NEW_PASSWORD);
-		sendkeyToElement(driver, ChangePasswordPageUI.CONFIRM_NEW_PASSWORD, confirmNewPassword);
-	}
-
 	public void clickToChangePasswordButton() {
 		waitForElementClickAble(driver, ChangePasswordPageUI.CHANGE_PASSWORD_BUTTON);
 		clickToElement(driver, ChangePasswordPageUI.CHANGE_PASSWORD_BUTTON);
