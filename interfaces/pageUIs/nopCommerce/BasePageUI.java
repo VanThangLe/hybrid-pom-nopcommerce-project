@@ -3,7 +3,7 @@ package pageUIs.nopCommerce;
 public class BasePageUI {
 	public static final String DYNAMIC_SIDE_BAR_PAGE_LINK = "//div[@class='listbox']//a[text()='%s']";
 	public static final String TEXTBOX_BY_ID = "//input[@id='%s']";
-	public static final String BUTTON_BY_ID = "//input[@id='%s']";
+	public static final String BUTTON_BY_ID = "//button[@id='%s']";
 	public static final String RADIO_BY_LABEL = "//label[text()='%s']/preceding-sibling::input";
 	public static final String DROPDOWN_BY_NAME = "//select[@name='%s']";
 	public static final String CHECKBOX_BY_LABEL = "//label[text()='%s']/following-sibling::input";
