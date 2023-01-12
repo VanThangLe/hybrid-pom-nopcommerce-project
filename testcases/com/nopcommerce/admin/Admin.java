@@ -1,7 +1,6 @@
 package com.nopcommerce.admin;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -11,7 +10,7 @@ import commons.BaseTest;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.PageGenerator;
 
-public class User_01_Admin extends BaseTest {
+public class Admin extends BaseTest {
 	WebDriver driver;
 	HomePageObject homePage;
 	

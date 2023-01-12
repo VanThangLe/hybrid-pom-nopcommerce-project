@@ -40,6 +40,6 @@ public class ProductReviewPageObject extends BasePage{
 	public CustomerInfoPageObject clickToMyAccountLink() {
 		waitForElementClickAble(driver, ProductReviewPageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, ProductReviewPageUI.MY_ACCOUNT_LINK);
-		return PageGenerator.getCustomerInforPage(driver);
+		return PageGenerator.getCustomerInfoPage(driver);
 	}
 }

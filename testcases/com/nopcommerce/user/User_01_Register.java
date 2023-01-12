@@ -1,7 +1,6 @@
 package com.nopcommerce.user;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -24,22 +23,23 @@ public class User_01_Register extends BaseTest {
 		log.info("Pre-condition: Open browser '" + browserName + "'and navigate to '" + url + "'");
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGenerator.getHomePage(driver);
+		
+		log.info("Pre-condition: Open 'Register' page");
+		homePage.clickToTextLink(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 	}
 	
 	@Test
 	public void Testcase_01_Register_With_Empty_Data() {
-		log.info("Testcase 01 - Step 01: Open 'Register' page");
-		registerPage = homePage.clickToRegisterLink();
-		
-		log.info("Testcase 01 - Step 02: Click to 'Register' button");
+		log.info("Testcase 01 - Step 01: Click to 'Register' button");
 		registerPage.clickToButtonByID(driver, "register-button");
 		
-		log.info("Testcase 01 - Step 03: Verify error message");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "FirstName"), "First name is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "LastName"), "Last name is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Email is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password is required.");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "Password is required.");
+		log.info("Testcase 01 - Step 02: Verify error message");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "FirstName"), "First name is required.");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "LastName"), "Last name is required.");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Email is required.");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password is required.");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "Password is required.");
 	}
 	
 	@Test
@@ -54,7 +54,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.clickToButtonByID(driver, "register-button");
 		
 		log.info("Testcase 01 - Step 05: Verify error message");
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "Email"), "Wrong email");
 	}
 	
 	@Test
@@ -84,15 +84,13 @@ public class User_01_Register extends BaseTest {
 		registerPage.clickToButtonByID(driver, "register-button");
 		
 		log.info("Testcase 03 - Step 01: Open 'Register' page");
-		Assert.assertTrue(registerPage.isRegisterSuccessMessageDisplayed());
-		
-		log.info("Testcase 03 - Step 01: Open 'Register' page");
-		homePage = registerPage.logoutToSystem(driver);
+		verifyTrue(registerPage.isRegisterSuccessMessageDisplayed());
 	}
 	
 	@Test
 	public void Testcase_04_Register_With_Exist_Email() {
-		registerPage = homePage.clickToRegisterLink();
+		registerPage.clickToTextLink(driver, "ico-register");
+		
 		registerPage.enterToTextboxByID(driver, "FirstName", "Automation");
 		registerPage.enterToTextboxByID(driver, "LastName", "FC");
 		registerPage.enterToTextboxByID(driver, "Email", "automationfc1.vn@gmail.com");
@@ -100,7 +98,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123456");
 		registerPage.clickToButtonByID(driver, "register-button");
 		
-		Assert.assertEquals(registerPage.getErrorFormMessage(driver), "The specified email already exists");
+		verifyEquals(registerPage.getErrorFormMessage(driver), "The specified email already exists");
 	}
 	
 	@Test
@@ -113,7 +111,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "1234");
 		registerPage.clickToButtonByID(driver, "register-button");
 		
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "Password"), "Password must meet the following rules:\n" + "must have at least 6 characters");
 	}
 	
 	@Test
@@ -126,7 +124,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.enterToTextboxByID(driver, "ConfirmPassword", "123abc");
 		registerPage.clickToButtonByID(driver, "register-button");
 		
-		Assert.assertEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
+		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	
 	@Parameters({ "browser" })

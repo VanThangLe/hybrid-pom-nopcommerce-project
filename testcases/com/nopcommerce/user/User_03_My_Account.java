@@ -1,5 +1,8 @@
 package com.nopcommerce.user;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -31,20 +34,20 @@ public class User_03_My_Account extends BaseTest {
 	ProductDetailPageObject productDetailPage;
 	ProductReviewPageObject productReviewPage;
 	
-	@Parameters({"browser", "url"})
+	@Parameters({"browserName", "url"})
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
+		log.info("Pre-condition: Open browser '" + browserName + "'and navigate to '" + url + "'");
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGenerator.getHomePage(driver);
 		
-		loginPage = homePage.clickToLoginLink();
-		loginPage.loginToSystem(driver, "automationfanclub.vn@gmail.com", "123456");
-		homePage = loginPage.clickToButtonByLabel("Log in");
+		homePage.loginToSystem(driver, "automationfanclub.vn@gmail.com", "123456");
 	}
 	
 	@Test
 	public void TC_01_Update_Customer_Info() {
-		customerInfoPage = homePage.clickToMyAccountLink();
+		homePage.clickToTextLink(driver, "ico-account");
+		customerInfoPage = PageGenerator.getCustomerInfoPage(driver);
 		
 		customerInfoPage.clickToRadioByLabel(driver, "female");
 		customerInfoPage.enterToTextboxByID(driver, "FirstName", "Automation");
@@ -119,7 +122,7 @@ public class User_03_My_Account extends BaseTest {
 	
 	@Test
 	public void TC_04_Add_Product_Reviews() {
-		productDetailPage = homePage.clickToTitleProduct("Build your own computer");
+		//productDetailPage = homePage.clickToTitleProduct("Build your own computer");
 		productReviewPage = productDetailPage.clickToAddReviewLink();
 		productReviewPage.enterToReviewTitleTextbox("Computer Case");
 		productReviewPage.enterToReviewTextTextbox("Fast");

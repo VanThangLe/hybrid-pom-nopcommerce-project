@@ -17,8 +17,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.PageGenerator;
 import pageUIs.nopCommerce.BasePageUI;
 
 public class BasePage {
@@ -567,17 +565,20 @@ public class BasePage {
 		return getElementText(driver, BasePageUI.ERROR_FORM_MESAGE_REGISTER);
 	}
 	
-	public HomePageObject logoutToSystem(WebDriver driver) {
-		waitForElementClickAble(driver, BasePageUI.LOGOUT_LINK);
-		clickToElement(driver, BasePageUI.LOGOUT_LINK);
-		return PageGenerator.getHomePage(driver);
+	public void clickToTextLink(WebDriver driver, String textLink) {
+		waitForElementClickAble(driver, BasePageUI.DYNAMIC_LINK, textLink);
+		clickToElement(driver, BasePageUI.DYNAMIC_LINK, textLink);
 	}
 	
-	public HomePageObject loginToSystem(WebDriver driver, String username, String password) {
-		waitForElementVisible(driver, BasePageUI.EMAIL_LOGIN_TEXTBOX);
-		sendkeyToElement(driver, BasePageUI.EMAIL_LOGIN_TEXTBOX, username);
-		sendkeyToElement(driver, BasePageUI.PASSWORD_LOGIN_TEXTBOX, password);
-		clickToElement(driver, BasePageUI.LOGIN_BUTTON);
-		return PageGenerator.getHomePage(driver);
+	public void loginToSystem(WebDriver driver, String emailID, String passwordID) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, "Email");
+		sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, emailID, "Email");
+		sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, passwordID, "Password");
+		clickToElement(driver, BasePageUI.DYNAMIC_BUTTON,"Log in");
+	}
+	
+	public void clickToButtonByLabel(WebDriver driver, String buttonLabel) {
+		waitForElementClickAble(driver, BasePageUI.DYNAMIC_BUTTON, buttonLabel);
+		clickToElement(driver, BasePageUI.DYNAMIC_BUTTON, buttonLabel);
 	}
 }

@@ -11,11 +11,9 @@ public class BasePageUI {
 	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//table[@id='%s']/tbody/tr[%s]/td[%s]";
 	public static final String ANY_FIELD_BY_ID = "//*[@id='%s']";
 	public static final String ERROR_FIELD_MESSAGE_REGISTER_BY_ID = "//span[@class='field-validation-error']//span[@id='%s-error']";
+	public static final String DYNAMIC_BUTTON = "//button[contains(text(),'%s')]";
+	public static final String DYNAMIC_LINK = "//a[@class='%s']";
 	
 	public static final String ERROR_FORM_MESAGE_REGISTER = "//div[@class='message-error validation-summary-errors']";
-	public static final String LOGOUT_LINK = "//a[@class='ico-logout']";
-	public static final String EMAIL_LOGIN_TEXTBOX = "//input[@id='Email']";
-	public static final String PASSWORD_LOGIN_TEXTBOX = "//input[@id='Password']";
 	public static final String UPLOAD_FILE = "//input[@type='file']";
-	public static final String LOGIN_BUTTON = "//button[contains(text(),'Log in')]";
 }
