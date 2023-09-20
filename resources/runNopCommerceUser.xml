@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <suite name="User NopCommerce Project" parallel="false">
-	<parameter name="url" value="http://demo.nopcommerce.com/" />
+	<parameter name="appUrl" value="http://demo.nopcommerce.com/" />
   
 	  <test name="Run on CHROME">
 	  <parameter name="browserName" value="chrome" />

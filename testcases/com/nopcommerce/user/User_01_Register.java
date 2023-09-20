@@ -17,11 +17,11 @@ public class User_01_Register extends BaseTest {
 	RegisterPageObject registerPage;
 	String email, password;
 	
-	@Parameters({"browserName", "url"})
+	@Parameters({"browserName", "appUrl"})
 	@BeforeClass
-	public void beforeClass(String browserName, String url) {
-		log.info("Pre-condition: Open browser '" + browserName + "'and navigate to '" + url + "'");
-		driver = getBrowserDriver(browserName, url);
+	public void beforeClass(String browserName, String appUrl) {
+		log.info("Pre-condition: Open browser '" + browserName + "'and navigate to '" + appUrl + "'");
+		driver = getBrowserDriver(browserName, appUrl);
 		homePage = PageGenerator.getHomePage(driver);
 		
 		log.info("Pre-condition: Open 'Register' page");
@@ -127,7 +127,7 @@ public class User_01_Register extends BaseTest {
 		verifyEquals(registerPage.getErrorFieldMessageByID(driver, "ConfirmPassword"), "The password and confirmation password do not match.");
 	}
 	
-	@Parameters({ "browser" })
+	@Parameters({ "browserName" })
 	@AfterClass(alwaysRun = true)
 	public void cleanBrowser(String browserName) {
 		log.info("Post-condition: Close browser '" + browserName + "'");
